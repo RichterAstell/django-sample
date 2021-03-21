@@ -9,10 +9,17 @@ def index():
     return HttpResponse('index page')
 
 def search(request):
-    if (request.POST.get('first_name') != None):
+    if (request.POST.get('first_name') != None and request.POST.get('last_name') != None):
         fname = request.POST.get('first_name')
+        lname = request.POST.get('last_name')
+        # list = Employee.objects.filter(
+        #     first_name__contains=fname
+        #     ,last_name__contains=lname
+        # ).order_by('id')[:5]
         list = Employee.objects.filter(
-            first_name=fname
+            first_name__contains=fname
+        ).filter(
+            last_name__contains=lname
         ).order_by('id')[:5]
         return render(request, 'employee/search.html', {'list': list})
 
