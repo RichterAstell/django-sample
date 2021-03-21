@@ -1,10 +1,25 @@
+<h1>{{ question.question_text }}</h1>
 
-{% if list %}
-    <ul>
-    {% for employee in list %}
-        <li><a href="/employee/{{ employee.id }}/">{{ employee.getFullName }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Employee not found.</p>
-{% endif %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'employee:search' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="first_name" id="search_first_name" value="">
+    <label for="search_first_name">first name</label>
+    <br>
+    <input type="text" name="last_name" id="search_last_name" value="">
+    <label for="search_last_name">last name</label>
+    <br>
+    <input type="submit" value="Search">
+</form>
+<div>
+    {% if list %}
+        <ul>
+        {% for employee in list %}
+            <li><a href="/employee/{{ employee.id }}/">{{ employee.getFullName }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Employee not found.</p>
+    {% endif %}
+</div>

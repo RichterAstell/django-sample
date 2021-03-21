@@ -5,12 +5,27 @@ from employee.models import Employee
 from django.http import HttpResponse
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+def index():
+    return HttpResponse('index page')
 
-class SearchView(generic.ListView):
-    template_name = 'employee/search.html'
-    context_object_name = 'list'
+def search(request):
+    if (request.POST.get('first_name') != None):
+        fname = request.POST.get('first_name')
+        list = Employee.objects.filter(
+            first_name=fname
+        ).order_by('id')[:5]
+        return render(request, 'employee/search.html', {'list': list})
 
-    def get_queryset(request):
-        return Employee.objects.order_by('id')[:5]
+    return render(request, 'employee/search.html')
+
+# class SearchView(generic.ListView):
+#     template_name = 'employee/search.html'
+#     context_object_name = 'list'
+
+#     def get_queryset(self, request):
+#         if (request.POST['first_name']):
+#             return Employee.objects.filter(
+#                 fist_name=request.POST['first_name']
+#             ).order_by('id')[:5]
+
+#         return Employee.objects.order_by('id')[:5]
