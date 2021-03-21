@@ -4,9 +4,9 @@ from django.db import models
 class Employee(models.Model):
     first_name = models.CharField(max_length=5)
     last_name = models.CharField(max_length=5)
-    # first_name_kana = models.CharField(max_length=10)
-    # last_name_kana = models.CharField(max_length=10)
-    # birth_day = models.DateTimeField('date published')
+    first_name_kana = models.CharField(max_length=10, null=True)
+    last_name_kana = models.CharField(max_length=10, null=True)
+    birth_day = models.DateTimeField(null=True)
     # joining_date = models.DateTimeField('date published')
     # leave_date = models.DateTimeField('date published')
     # country_of_citizenship = models.IntegerField()

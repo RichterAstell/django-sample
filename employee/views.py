@@ -12,5 +12,5 @@ class SearchView(generic.ListView):
     template_name = 'employee/search.html'
     context_object_name = 'list'
 
-    def get_queryset(self):
+    def get_queryset(request):
         return Employee.objects.order_by('id')[:5]
