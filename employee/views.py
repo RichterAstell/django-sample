@@ -9,21 +9,18 @@ def index():
     return HttpResponse('index page')
 
 def search(request):
-    if (request.POST.get('first_name') != None and request.POST.get('last_name') != None):
+    e = Employee.objects
+    if (request.POST.get('first_name') != None):
         fname = request.POST.get('first_name')
+        e = e.filter(first_name__contains=fname)
+    if (request.POST.get('last_name') != None):
         lname = request.POST.get('last_name')
-        # list = Employee.objects.filter(
-        #     first_name__contains=fname
-        #     ,last_name__contains=lname
-        # ).order_by('id')[:5]
-        list = Employee.objects.filter(
-            first_name__contains=fname
-        ).filter(
-            last_name__contains=lname
-        ).order_by('id')[:5]
-        return render(request, 'employee/search.html', {'list': list})
+        e = e.filter(last_name__contains=lname)
 
-    return render(request, 'employee/search.html')
+    list = e.order_by('id')[:5]
+    return render(request, 'employee/search.html', {'list': list})
+
+    # return render(request, 'employee/search.html')
 
 # class SearchView(generic.ListView):
 #     template_name = 'employee/search.html'
