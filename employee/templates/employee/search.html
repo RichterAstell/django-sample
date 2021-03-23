@@ -14,11 +14,25 @@
 </form>
 <div>
     {% if list %}
-        <ul>
-        {% for employee in list %}
-            <li><a href="/employee/{{ employee.id }}/">{{ employee.getFullName }}</a></li>
-        {% endfor %}
-        </ul>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>first name</th>
+                <th>last name</th>
+                <th>first name kana</th>
+                <th>last name kana</th>
+            </tr>
+            {% for employee in list %}
+            <tr>
+                <td><a href="/employee/{{ employee.id }}/">{{ employee.id }}</a></td>
+                <td>{{ employee.first_name }}</a></td>
+                <td>{{ employee.last_name }}</a></td>
+                <td>{{ employee.first_name_kana }}</a></td>
+                <td>{{ employee.last_name_kana }}</a></td>
+            </tr>
+            {% endfor %}
+            </ul>
+        </table>
     {% else %}
         <p>Employee not found.</p>
     {% endif %}
