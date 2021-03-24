@@ -16,3 +16,7 @@ class Employee(models.Model):
 
     def getFullName(self):
         return self.first_name + self.last_name
+
+class User(models.Model):
+    user_name = models.CharField(max_length=255)
+    
