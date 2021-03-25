@@ -29,6 +29,7 @@ class Login(LoginView):
         logger.info("receive post request.")
         user = authenticate(username=request.POST['user_name'], password=request.POST['password'])
         if user is not None:
+            login(request, user)
             return render(request, 'employee/search.html')
         else:
             error_message = "login failed"
