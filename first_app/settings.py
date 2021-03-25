@@ -124,6 +124,6 @@ STATIC_URL = '/static/'
 
 # Login setting
 
-LOGIN_URL = '/login' 
-LOGIN_REDIRECT_URL = '/search'
-LOGOUT_REDIRECT_URL='/login'
+LOGIN_URL = '/employee/login' 
+LOGIN_REDIRECT_URL = '/employee/search'
+LOGOUT_REDIRECT_URL='/employee/login'
