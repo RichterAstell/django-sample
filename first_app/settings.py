@@ -25,7 +25,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import environ
 env = environ.Env()
 env.read_env('.env')
-SECRET_KEY = env('SECRET_KEY')
+try:
+    SECRET_KEY = env('SECRET_KEY')
+except:
+    from django.core.management.utils import get_random_secret_key
+    new_secret_key = get_random_secret_key()
+    file = ".env"
+    message = "SECRET_KEY='" + new_secret_key + "'"
+    with open(file, mode='a') as f:
+        f.write(message)
+    SECRET_KEY = env('SECRET_KEY')
+
 # try:
 #     from .local_secret import *
 # except ImportError:
