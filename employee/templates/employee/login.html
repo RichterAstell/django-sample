@@ -2,12 +2,12 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'employee:login' %}" method="post">
+<form action="{% url 'employee:signin' %}" method="post">
     {% csrf_token %}
-    <input type="text" name="user_name" id="user_name" value="">
-    <label for="user_name">user name</label>
+    <input type="text" name="username" id="username" value="">
+    <label for="username">user name</label>
     <br>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" value="">
     <label for="password">password</label>
     <br>
     <input type="submit" value="Login">
