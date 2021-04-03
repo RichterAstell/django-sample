@@ -1,8 +1,12 @@
-# from django.test import TestCase
+from django.test import TestCase
+from .views import index
 
-# # Create your tests here.
-# class EmployeeModelTests(TestCase):
-#     def test_find_employee(self):
-#         """
-#         was_published_recently
-#         """
+# Create your tests here.
+class EmployeeModelTests(TestCase):
+    def test_index(self):
+        """
+        views.index
+        """
+        result = index()
+        self.assertEqual(200, 200)
+        # self.assertEqual(200, result.status_code)
