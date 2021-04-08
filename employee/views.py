@@ -67,8 +67,8 @@ def signout(request):
 
 @login_required
 def search(request):
-    if not request.user.is_authenticated:
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    # if not request.user.is_authenticated:
+    #     return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     e = Employee.objects
     if (request.POST.get('first_name') != None):
         fname = request.POST.get('first_name')
