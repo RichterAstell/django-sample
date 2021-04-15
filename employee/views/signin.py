@@ -1,5 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
+from django.http import HttpResponse
+
+def index():
+    return HttpResponse('index pageee')
 
 def signin(request):
     username = request.POST['username']
