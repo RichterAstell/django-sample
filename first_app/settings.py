@@ -57,6 +57,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
     'employee.apps.EmployeeConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
