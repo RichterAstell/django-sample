@@ -1,5 +1,8 @@
 <h1>test</h1>
 <p>test pages</p>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 <form action="{% url 'pages:test' %}" method="post">
 {% csrf_token %}
     <input type="text" name="user" id="user" value="">
