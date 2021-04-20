@@ -1,2 +1,10 @@
 <h1>test</h1>
 <p>test pages</p>
+<form action="{% url 'pages:test' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="user" id="user" value="">
+    <label for="choice{{ user }}"></label><br>
+    <input type="text" name="pass" id="pass" value="">
+    <label for="choice{{ pass }}"></label><br>
+<input type="submit" value="Submit">
+</form>
