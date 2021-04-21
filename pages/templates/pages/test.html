@@ -1,13 +1,19 @@
 <h1>test</h1>
 <p>test pages</p>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}
+<div>
+    {% for message in error_message %}
+    <p><strong style="color:red">{{ message }}</strong></p>
+    {% endfor %}
+</div>
+{% endif %}
 
 <form action="{% url 'pages:test' %}" method="post">
-{% csrf_token %}
+    {% csrf_token %}
     <input type="text" name="user" id="user" value="">
     <label for="choice{{ user }}"></label><br>
-    <input type="text" name="pass" id="pass" value="">
-    <label for="choice{{ pass }}"></label><br>
-<input type="submit" value="Submit">
+    <input type="text" name="password" id="password" value="">
+    <label for="choice{{ password }}"></label><br>
+    <input type="submit" value="Submit">
 </form>
