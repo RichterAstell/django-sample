@@ -1,0 +1,16 @@
+<h1>form test</h1>
+<p>form pages</p>
+
+{% if error_message %}
+<div>
+    {% for message in error_message %}
+    <p><strong style="color:red">{{ message }}</strong></p>
+    {% endfor %}
+</div>
+{% endif %}
+<form action="{% url 'pages:form' %}" method="post">
+    {% csrf_token %}
+    {{ form.name }}
+    {{ form.password }}
+    <input type="submit" value="Submit">
+</form>
