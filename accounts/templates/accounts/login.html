@@ -1,0 +1,15 @@
+<h1>Login</h1>
+{% if error_message %}
+<p><strong style="color: red;">{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    <label for="member_id">member id</label>
+    <input type="text" name="member_id" id="member_id" value="">    
+    <br>
+    <label for="password">password</label>
+    <input type="password" name="password" id="password" value="">
+    <br>
+    <input type="submit" value="Login">
+</form>

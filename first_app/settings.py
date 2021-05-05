@@ -57,6 +57,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'employee.apps.EmployeeConfig',
     'polls.apps.PollsConfig',
@@ -150,6 +151,8 @@ STATIC_URL = '/static/'
 
 # Login setting
 
-LOGIN_URL = '/employee/login' 
-LOGIN_REDIRECT_URL = '/employee/search'
-LOGOUT_REDIRECT_URL='/employee/login'
+LOGIN_URL = '/accounts/' 
+LOGIN_REDIRECT_URL = '/accounts/login_success'
+LOGOUT_REDIRECT_URL='/accounts/'
+# CustomUser
+AUTH_USER_MODEL = 'accounts.Member'
